@@ -1,59 +1,65 @@
-# Werewolf for Telegram
+# Hombre lobo para Telegram
 
-This is the main repo for Werewolf for Telegram.
+Este es el principal repositorio de Werewolf para Telegram.
 
-For language file updates, please submit the xml file on Telegram to the [support chat](http://telegram.me/werewolfsupport) and ask for assistance
+Para actualizaciones de archivos de idioma, envíe el archivo xml en Telegram al [chat de soporte] (http://telegram.me/werewolfsupport) y solicite ayuda.
 
-### Visual Studio Team Services Continuous Integration		
+### Integración continua de Visual Studio Team Services	
 ![build status](https://parabola949.visualstudio.com/_apis/public/build/definitions/c0505bb4-b972-452b-88be-acdc00501797/2/badge)
 
-## Requirements
+## Requisitos
 * .NET Framework 4.5.2
 * SQL Server (I am using 2014) / SQL Server 2016
 * Windows Server
 
-## Setup
+## Preparar
 
-To set up werewolf on a private server, follow these steps:
+Para configurar el hombre lobo en un servidor privado, siga estos pasos:
 
-1. Go to [BotFather](https://telegram.me/BotFather) and create a new bot.  Answer all of the questions it asks, and you will receive an API Token.
-   * On your server, open regedit, and go to `HKLM\SOFTWARE\`, create a new Key named `Werewolf` (HKLM - HKEY_LOCAL_MACHINE)
-   * In the new key create a new string value named `ProductionAPI`.  
-   * Paste your API token here.
-2. Grab the werewolf.sql file from this repository
-   * Open the file in notepad, notepad++, whatever you use
-   * Double check the path at the top of the file - update it if you are using a different SQL version
-   * Run the sql script.  This will create the `werewolf` database and all the tables / views / stored procs to go with it
-   * If you already have some admins (including yourself), add their TelegramID's to the `dbo.Admin` table
-		* In order to obtain your ID, headover to your bot in telegram and /Start. After that, toss a random text to it. Enter this URL to your browser (https://api.telegram.org/botYOURTELEGRAMBOTAPIKEY/getUpdates)
-3. Now it's time to compile the source code
-   * On your server, open regedit
-   * In the `Werewolf` key create a new string value named `BotConnectionString`.
-   * Paste the Connection String here.
-        * Connection String should be this (change the values) `metadata=res://*/WerewolfModel.csdl|res://*/WerewolfModel.ssdl|res://*/WerewolfModel.msl;provider=System.Data.SqlClient;provider connection string="data source=SERVERADDRESS;initial catalog=werewolf;user id=USERNAME;password=PASSWORD;MultipleActiveResultSets=True;App=EntityFramework"`
-			* If you are using Windows Authentication for your MSSQL Server, do take note that the password property will NO Longer be required. You're required to replace it(both user id and password) with "Trusted_Connection=True;" instead.
-      * .gitignore has marked this file, so it won't be committed. **However, when you create the setting, VS will copy it to the app.config - make sure to remove it if you plan on committing back to your fork**
-   * Create another new string value named BotanReleaseAPI. You can leave this blank if you don't want to track your usage using BotanIO.
-   * If you plan on running another instance of the bot as beta, add another two new string values named BotanBetaAPI and BetaAPI. Again, you can leave BotanBetaAPI empty if you want. Set BetaAPI to the token of your beta bot.
-   * In Visual Studio, open the solution.  Make sure you are set to `RELEASE` build.  You may want to go into `Werewolf_Control.Helpers.UpdateHelper.cs` and add your id to `internal static int[] Devs = { ... }`.  Also, double check the `Settings.cs` files in both `Werewolf Control/Helpers` and `Werewolf Node/Helpers`.
-   * Build the solution
-4. Server directories
-   * Pick any directory for your root directory
+1. Vaya a [BotFather] (https://telegram.me/BotFather) y cree un nuevo bot. Responda todas las preguntas que haga y recibirá un token API.
+    * En su servidor, abra regedit y vaya a `HKLM \ SOFTWARE \`, cree una nueva clave llamada `Werewolf` (HKLM - HKEY_LOCAL_MACHINE)
+    * En la nueva clave, cree un nuevo valor de cadena denominado `ProductionAPI`.
+    * Pegue su token API aquí.
+    
+2. Toma el archivo werewolf.sql de este repositorio
+392/5000
+    * Abra el archivo en el bloc de notas, notepad ++, lo que sea que use
+    * Verifique la ruta en la parte superior del archivo: actualícela si está utilizando una versión SQL diferente
+    * Ejecute el script sql. Esto creará la base de datos `werewolf` y todas las tablas / vistas / procesos almacenados para ir con ella.
+    * Si ya tiene algunos administradores (incluido usted), agregue sus TelegramID a la tabla `dbo.Admin`		
+    * In order to obtain your ID, headover to your bot in telegram and /Start. After that, toss a random text to it. Enter this URL to your browser (https://api.telegram.org/botYOURTELEGRAMBOTAPIKEY/getUpdates).
+    
+3. Ahora es tiempo de compilar el código fuente
+    * En su servidor, abra regedit
+    * En la clave `Werewolf`, cree un nuevo valor de cadena llamado` BotConnectionString`.
+    * Pegue la cadena de conexión aquí.
+    * La cadena de conexión debería ser esto (cambiar los valores)
+`metadata=res://*/WerewolfModel.csdl|res://*/WerewolfModel.ssdl|res://*/WerewolfModel.msl;provider=System.Data.SqlClient;provider connection string="data source=SERVERADDRESS;initial catalog=werewolf;user id=USERNAME;password=PASSWORD;MultipleActiveResultSets=True;App=EntityFramework"`
+      * Si está utilizando la autenticación de Windows para su servidor MSSQL, tenga en cuenta que la propiedad de contraseña ya NO será necesaria. Debe reemplazarlo (tanto el ID de usuario como la contraseña) con "Trusted_Connection = True;" en lugar.
+      * .gitignore ha marcado este archivo, por lo que no se confirmará. ** Sin embargo, cuando cree la configuración, VS la copiará en la app.config. Asegúrese de eliminarla si planea volver a su tenedor **
+   * Cree otro nuevo valor de cadena llamado BotanReleaseAPI. Puede dejar esto en blanco si no desea realizar un seguimiento de su uso con BotanIO.
+   * Si planea ejecutar otra instancia del bot como beta, agregue otros dos nuevos valores de cadena llamados BotanBetaAPI y BetaAPI. Nuevamente, puede dejar BotanBetaAPI vacío si lo desea. Establezca BetaAPI en el token de su beta bot.
+   * En Visual Studio, abra la solución. Asegúrate de estar configurado en la versión 'RELEASE'. Es posible que desee entrar en
+   `Werewolf_Control.Helpers.UpdateHelper.cs` and add your id to `internal static int[] Devs = { ... }`. Además, verifique dos veces el
+ `Settings.cs` files in both `Werewolf Control/Helpers` and `Werewolf Node/Helpers`.
+   * Construye la solución
+   
+4. Directorios del servidor
+   * Elija cualquier directorio para su directorio raíz
 
    | Directory | Contents |
    |-----------|---------:|
-   |`root\Instance Name\Control`|Control build|
-   |`root\Instance Name\Node 1`|Node build|
-   |`root\Instance Name\Node <#>`|Node updates can be added to a new Node folder.  Running `/replacenodes` in Telegram will tell the bot to automatically find the newest node (by build time) and run it|
-   |`root\Instance Name\Logs`|Logging directory|
-   |`root\Languages`|Language xml files - These files are shared by all instances of Werewolf|
+   |`root\Instance Name\Control`|Control de construcción|
+   |`root\Instance Name\Node 1`|Construcción del nodo|
+   |`root\Instance Name\Node <#>`|Las actualizaciones de nodo se pueden agregar a una nueva carpeta de nodo. La ejecución /replacenodesen Telegram le indicará al bot que busque automáticamente el nodo más nuevo (por tiempo de compilación) y lo ejecute|
+   |`root\Instance Name\Logs`|Directorio de registro|
+   |`root\Languages`|Archivos xml de idioma: todos los casos de Werewolf comparten estos archivos|
 
-   * Note - Once all nodes are running the newest version (Node 2 directory), the next time you update nodes, you can put the new files in Node 1 and `/replacenodes`.  Again, the bot will always take whichever node it finds that is the newest, as long as the directory has `Node` in the name.  **do not name any other directory in the root folder anything with `Node` in it**
-5. Fire up the bot!
-6. If you try to start a game now, you will notice that the bot will just respond with an error. That is because you didn't update the gif ids yet. See the section below for instructions on how to do this.
+   * Nota: Una vez que todos los nodos estén ejecutando la versión más reciente (directorio del Nodo 2), la próxima vez que actualice los nodos, puede colocar los nuevos archivos en el Nodo 1 y /replacenodes. Nuevamente, el bot siempre tomará el nodo que encuentre que sea el más nuevo, siempre que el directorio tenga Nodeel nombre. no nombrar cualquier otro directorio en la carpeta raíz con nada Nodeen ella.
+5. ¡Enciende el bot!
+6. Si intentas iniciar un juego ahora, notarás que el bot solo responderá con un error. Esto se debe a que aún no actualizaste los identificadores de gif. Consulte la siguiente sección para obtener instrucciones sobre cómo hacer esto.
 
+## SOPORTE GIF
+Para utilizar GIF con el bot, deberá "enseñar" al bot las nuevas ID de GIF. Desde Telegram, ejecute /learngif, el bot responderá con GIF learning = true. Ahora envíele un GIF y el bot responderá con una identificación. Envía al bot todos los GIF que necesites. En el proyecto Node, vaya a Helpers> Settings.cs y busque las listas de GIF. Deberá eliminar todas las ID existentes e ingresar las ID que acaba de obtener del bot.
 
-## GIF SUPPORT
-In order to use GIFs with the bot, you will need to "teach" the bot the new GIF IDs.  From Telegram, run `/learngif`, the bot will respond with `GIF learning = true`.  Now send it a GIF, and the bot will reply with an ID.  Send the bot all the GIFs you need.  In the Node project, go to Helpers > Settings.cs and find the GIF lists.  You'll need to remove all of the existing IDs and put in the IDs you just got from the bot.
-
-You can test these by running `/dumpgifs` (preferrably in Private Message!).  Make sure you check out DevCommands.cs, and look at the `DumpGifs()` method - most of it is commented out.  Uncomment what you need.
+Puede probarlos ejecutando /dumpgifs(¡preferiblemente en Mensaje privado!). Asegúrese de revisar DevCommands.cs y mire el DumpGifs()método, la mayoría está comentado. Descomenta lo que necesitas.
