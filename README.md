@@ -27,7 +27,7 @@ Para configurar el hombre lobo en un servidor privado, siga estos pasos:
     * Verifique la ruta en la parte superior del archivo: actualícela si está utilizando una versión SQL diferente
     * Ejecute el script sql. Esto creará la base de datos `werewolf` y todas las tablas / vistas / procesos almacenados para ir con ella.
     * Si ya tiene algunos administradores (incluido usted), agregue sus TelegramID a la tabla `dbo.Admin`		
-    * In order to obtain your ID, headover to your bot in telegram and /Start. After that, toss a random text to it. Enter this URL to your browser (https://api.telegram.org/botYOURTELEGRAMBOTAPIKEY/getUpdates).
+    * Para obtener su ID, acceda a su bot en Telegram y / Start. Después de eso, envíale un texto al azar. Ingrese esta URL en su navegador (https://api.telegram.org/botYOURTELEGRAMBOTAPIKEY/getUpdates).
     
 3. Ahora es tiempo de compilar el código fuente
     * En su servidor, abra regedit
