@@ -2,7 +2,7 @@
 
 Este es el principal repositorio de Werewolf para Telegram.
 
-Para actualizaciones de archivos de idioma, envíe el archivo xml en Telegram al [chat de soporte] (http://telegram.me/werewolfsupport) y solicite ayuda.
+Para actualizaciones de archivos de idioma, envíe el archivo xml en Telegram al [chat de soporte](http://telegram.me/werewolfsupport) y solicite ayuda.
 
 ### Integración continua de Visual Studio Team Services	
 ![build status](https://parabola949.visualstudio.com/_apis/public/build/definitions/c0505bb4-b972-452b-88be-acdc00501797/2/badge)
