@@ -21,7 +21,7 @@ Para configurar el hombre lobo en un servidor privado, siga estos pasos:
     * En la nueva clave, cree un nuevo valor de cadena denominado `ProductionAPI`.
     * Pegue su token API aquí.
     
-2. Toma el archivo werewolf.sql de este repositorio
+2. Toma el archivo [werewolf.sql] (https://github.com/osvaldotapia/Werewolf/blob/master/werewolf.sql) de este repositorio
 392/5000
     * Abra el archivo en el bloc de notas, notepad ++, lo que sea que use
     * Verifique la ruta en la parte superior del archivo: actualícela si está utilizando una versión SQL diferente
