@@ -16,7 +16,7 @@ Para actualizaciones de archivos de idioma, envíe el archivo xml en Telegram al
 
 Para configurar el hombre lobo en un servidor privado, siga estos pasos:
 
-1. Vaya a [BotFather] (https://telegram.me/BotFather) y cree un nuevo bot. Responda todas las preguntas que haga y recibirá un token API.
+1. Vaya a [BotFather](https://telegram.me/BotFather) y cree un nuevo bot. Responda todas las preguntas que haga y recibirá un token API.
     * En su servidor, abra regedit y vaya a `HKLM \ SOFTWARE \`, cree una nueva clave llamada `Werewolf` (HKLM - HKEY_LOCAL_MACHINE)
     * En la nueva clave, cree un nuevo valor de cadena denominado `ProductionAPI`.
     * Pegue su token API aquí.
